@@ -1,7 +1,7 @@
 {
   "name": "@earnwithalee/stx-contract",
-  "version": "1.0.3",
-  "description": "Premium SDK for interacting with Stacks smart contracts.",
+  "version": "1.0.4",
+  "description": "Premium SDK for interacting with Stacks smart contracts. Features high-level abstractions for Clarity contract calls, data parsing, and transaction monitoring.",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
