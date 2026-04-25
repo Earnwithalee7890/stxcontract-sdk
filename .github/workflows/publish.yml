@@ -6,8 +6,10 @@ on:
       - 'v*'
 
 permissions:
-  contents: read
+  contents: write
   packages: write
+  id-token: write
+  actions: write
 
 jobs:
   # Job 1: Update the GitHub Repository Sidebar
@@ -29,8 +31,8 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: |
-          # 1. Rename to match GitHub owner
-          sed -i 's/@earnwithalee\/stx-contract/@earnwithalee7890\/stx-contract/' package.json
+          # 1. Rename to match EXACT repository name (Required for first-time GPR publish)
+          sed -i 's/@earnwithalee\/stx-contract/@earnwithalee7890\/stxcontract-sdk/' package.json
           
           # 2. Explicitly link to this repository
           sed -i 's|"repository": {|"repository": { "url": "git+https://github.com/${{ github.repository }}.git",|' package.json
