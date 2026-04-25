@@ -33,5 +33,6 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+          sed -i 's/@earnwithalee\/stx-contract/@earnwithalee7890\/stx-contract/' package.json
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
           npm publish --registry https://npm.pkg.github.com
