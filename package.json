@@ -1,6 +1,6 @@
 {
   "name": "@earnwithalee/stx-contract",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Premium SDK for interacting with Stacks smart contracts.",
   "type": "module",
   "main": "./dist/index.js",
@@ -42,7 +42,8 @@
   "homepage": "https://github.com/Earnwithalee7890/stxcontract-sdk#readme",
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "scope": "@earnwithalee"
   },
   "devDependencies": {
     "tsup": "^8.0.2",
