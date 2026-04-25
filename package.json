@@ -1,6 +1,6 @@
 {
   "name": "@earnwithalee/stx-contract",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Premium SDK for interacting with Stacks smart contracts.",
   "type": "module",
   "main": "./dist/index.js",
