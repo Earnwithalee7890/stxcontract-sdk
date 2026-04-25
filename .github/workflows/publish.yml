@@ -33,7 +33,7 @@ jobs:
           sed -i 's/@earnwithalee\/stx-contract/@earnwithalee7890\/stx-contract/' package.json
           
           # 2. Explicitly link to this repository
-          sed -i 's/"repository": {/"repository": { "url": "git+https:\/\/github.com\/'${{ github.repository }}'.git",/' package.json
+          sed -i 's|"repository": {|"repository": { "url": "git+https://github.com/${{ github.repository }}.git",|' package.json
           
           # 3. Force authentication
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
