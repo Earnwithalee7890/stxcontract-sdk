@@ -39,6 +39,9 @@
     "url": "https://github.com/Earnwithalee7890/stxcontract-sdk/issues"
   },
   "homepage": "https://github.com/Earnwithalee7890/stxcontract-sdk#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "devDependencies": {
     "tsup": "^8.0.2",
     "typescript": "^5.4.5"
