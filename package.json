@@ -1,0 +1,51 @@
+{
+  "name": "@earnwithalee/stx-contract",
+  "version": "1.0.0",
+  "description": "Premium SDK for interacting with Stacks smart contracts.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "dev": "tsup src/index.ts --format cjs,esm --watch --dts",
+    "lint": "tsc",
+    "publish:npm": "npm publish --access public"
+  },
+  "keywords": [
+    "stacks",
+    "clarity",
+    "stx",
+    "blockchain",
+    "sdk",
+    "bitcoin"
+  ],
+  "author": "earnwithalee",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Earnwithalee7890/stxcontract-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Earnwithalee7890/stxcontract-sdk/issues"
+  },
+  "homepage": "https://github.com/Earnwithalee7890/stxcontract-sdk#readme",
+  "devDependencies": {
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@stacks/common": "^6.14.2",
+    "@stacks/network": "^6.14.2",
+    "@stacks/transactions": "^6.14.2"
+  }
+}
