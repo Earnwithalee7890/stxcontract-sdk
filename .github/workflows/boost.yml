@@ -1,0 +1,38 @@
+name: NPM Download Boost
+
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: 'Number of downloads to simulate'
+        required: true
+        default: '50'
+
+jobs:
+  boost:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Boost Downloads
+        run: |
+          PACKAGE="@earnwithalee/stx-contract"
+          COUNT=${{ github.event.inputs.count }}
+          
+          echo "Starting boost for $PACKAGE ($COUNT downloads)..."
+          
+          for i in $(seq 1 $COUNT); do
+            echo "Iteration $i..."
+            # Create a unique temp directory for each download to avoid caching issues
+            mkdir "boost_$i"
+            cd "boost_$i"
+            npm init -y > /dev/null
+            npm install $PACKAGE --no-save --registry=https://registry.npmjs.org/
+            cd ..
+            rm -rf "boost_$i"
+            
+            # Optional: Short sleep to avoid rate limiting
+            if [ $((i % 10)) -eq 0 ]; then
+              sleep 1
+            fi
+          done
+          
+          echo "Boost complete!"
