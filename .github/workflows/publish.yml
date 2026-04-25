@@ -10,8 +10,34 @@ permissions:
   packages: write
 
 jobs:
-  publish:
+  # Job 1: Update the GitHub Repository Sidebar
+  publish-github:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@earnwithalee7890'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Build package
+        run: npm run build
+
+      - name: Publish to GitHub Packages
+        run: |
+          sed -i 's/@earnwithalee\/stx-contract/@earnwithalee7890\/stx-contract/' package.json
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Job 2: Update the Public NPM Registry
+  publish-npm:
+    runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -26,13 +52,6 @@ jobs:
         run: npm run build
 
       - name: Publish to NPM
-        continue-on-error: true
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish to GitHub Packages
-        run: |
-          sed -i 's/@earnwithalee\/stx-contract/@earnwithalee7890\/stx-contract/' package.json
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
-          npm publish --registry https://npm.pkg.github.com
